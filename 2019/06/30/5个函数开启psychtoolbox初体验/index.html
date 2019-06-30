@@ -1,4 +1,44 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>5个函数psychtoolbox初体验 | 乙酰胆碱</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">5个函数psychtoolbox初体验</h1><a id="logo" href="/.">乙酰胆碱</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">5个函数psychtoolbox初体验</h1><div class="post-meta">Jun 30, 2019</div><div class="post-content"><font size="3">matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。当然到目前为止是静态的，要让它像ppt一样动起来，你还需要使用其他操作类函数来实现，让窗口一个个切换、悬停、与人进行互动、获取外界的反应比如按键和声音、获取反应时，以及把你想要得到的数据，记录下来。<br><br>PTB跟E-Prime不同的是，后者的实验程序编写是可视化的，它给你提供各种对象，比如视频、图像、声音、文字等，你直接拖拽它们到空白的模板上，摆好位置。这个过程你是看得到的。但是PTB是半可视化的，你需要先写脚本代码，使用这些代码在空白的窗口上来绘制刺激。如果你不运行这些脚本代码，你是无法看到这些窗口和刺激的。而这很容易会让你的代码产生bug。<br><br>这里先介绍5个最基础的函数让你体验PTB。<br><br>废话不多说。<br><br># 1 创建主页面<br><br>或者我常叫它开屏，就是开启屏幕；如果你的实验有特殊要求，也可以开启多个屏幕。<br><br>    [windowPtr,rect]=Screen(‘OpenWindow’,windowPtrOrScreenNumber[,color][,rect] [,pixelSize][,numberOfBuffers][,stereomode] [,multisample] [,imagingmode][,specialFlags][,clientRect]);<br><br>然后我们介绍一下这些参数：<br><br><font color="red">(在[   ]里的参数是可选参数不是必须参数，即不是一定要去设置的，可以不用设置保持默认值即可)</font>
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>5个函数psychtoolbox初体验 | lyyourc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+</html>
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+    
+      <a href="/atom.xml">rss</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2019/06/30/5个函数开启psychtoolbox初体验/">5个函数psychtoolbox初体验</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">六月 30 2019</p>
+  </section>
+
+  <section class="article-entry">
+    <font size="3">matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。当然到目前为止是静态的，要让它像ppt一样动起来，你还需要使用其他操作类函数来实现，让窗口一个个切换、悬停、与人进行互动、获取外界的反应比如按键和声音、获取反应时，以及把你想要得到的数据，记录下来。<br><br>PTB跟E-Prime不同的是，后者的实验程序编写是可视化的，它给你提供各种对象，比如视频、图像、声音、文字等，你直接拖拽它们到空白的模板上，摆好位置。这个过程你是看得到的。但是PTB是半可视化的，你需要先写脚本代码，使用这些代码在空白的窗口上来绘制刺激。如果你不运行这些脚本代码，你是无法看到这些窗口和刺激的。而这很容易会让你的代码产生bug。<br><br>这里先介绍5个最基础的函数让你体验PTB。<br><br>废话不多说。<br><br># 1 创建主页面<br><br>或者我常叫它开屏，就是开启屏幕；如果你的实验有特殊要求，也可以开启多个屏幕。<br><br>    [windowPtr,rect]=Screen(‘OpenWindow’,windowPtrOrScreenNumber[,color][,rect] [,pixelSize][,numberOfBuffers][,stereomode] [,multisample] [,imagingmode][,specialFlags][,clientRect]);<br><br>然后我们介绍一下这些参数：<br><br><font color="red">(在[   ]里的参数是可选参数不是必须参数，即不是一定要去设置的，可以不用设置保持默认值即可)</font>
 
 
 <p><strong>①windowPtr</strong>，函数的第一个返回值。当你使用这个函数开启屏幕的时候，这个函数会返回此屏幕的句柄，或者叫指针。这个返回值是必需的，因为我们的所有刺激呈现都是基于Screen函数的，所以这个句柄的作用就是一个连接所有的Screen函数。比如说我开启了一个屏幕，并且返回了这个参数，假设它的值是1，也就是说，这个值就是这个屏幕的符号或者说编号，它告诉后面所有的Screen函数，你们都要在这个编号为1的屏幕上工作。</p>
@@ -72,4 +112,75 @@ WaitSecs(2); %等待2秒
 
 Screen(&apos;CloseAll&apos;); %关闭所有屏幕
 </code></pre><p>复制这5行代码到matlab的m文件，运行一下试试。</p></font><p></p>
-</div><div class="tags"><a href="/tags/psychtoolbox/">psychtoolbox</a></div><div class="post-nav"><a class="next" href="/2018/04/10/所谓梦想/">所谓梦想</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/psychtoolbox/" style="font-size: 15px;">psychtoolbox</a> <a href="/tags/梦想/" style="font-size: 15px;">梦想</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/30/5个函数开启psychtoolbox初体验/">5个函数psychtoolbox初体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/所谓梦想/">所谓梦想</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://weibo.com/2832122387/profile?topnav=1&amp;wvr=6" title="可能是我的微博" target="_blank">可能是我的微博</a><ul></ul><a href="http://www.example2.com/" title="暂时没有1" target="_blank">暂时没有1</a><ul></ul><a href="http://www.example3.com/" title="暂时没有1" target="_blank">暂时没有1</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">乙酰胆碱.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="http://7xrcp8.com1.z0.glb.clouddn.com/avatar.png" alt="avatar">
+    <div class="grid-item">
+      <p class="title"> lyyourc </p>
+      <p class="subtitle"> You Are The JavaScript In My HTML </p>
+    <div>
+  </div></div></section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a class="twitter-share-button" data-size="large" data-via="DrakeLeung" href="https://twitter.com/intent/tweet?text=nt size=" 3">matlab刺激"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'drakeleung';
+  
+  var disqus_url = 'http://yoursite.com/2019/06/30/5个函数开启psychtoolbox初体验/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>
