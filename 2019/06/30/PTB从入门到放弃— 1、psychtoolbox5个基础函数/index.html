@@ -5,8 +5,6 @@
   
   
   
-    <meta name="description" content="本文介绍5个基础的PTB函数">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
     5个函数psychtoolbox初体验 |
@@ -25,7 +23,7 @@
 <body>
 <main class="content">
   <section class="outer">
-  <article id="post-5个函数开启psychtoolbox初体验" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-PTB从入门到放弃— 1、psychtoolbox5个基础函数" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -42,7 +40,7 @@
 
     
       <div class="article-meta">
-        <a href="/2019/06/30/5个函数开启psychtoolbox初体验/" class="article-date">
+        <a href="/2019/06/30/PTB从入门到放弃— 1、psychtoolbox5个基础函数/" class="article-date">
   <time datetime="2019-06-30T07:00:00.000Z" itemprop="datePublished">2019-06-30</time>
 </a>
         
@@ -55,9 +53,17 @@
       
 
       
-        <font size="3">matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。当然到目前为止是静态的，要让它像ppt一样动起来，你还需要使用其他操作类函数来实现，让窗口一个个切换、悬停、与人进行互动、获取外界的反应比如按键和声音、获取反应时，以及把你想要得到的数据，记录下来。<br><br>PTB跟E-Prime不同的是，后者的实验程序编写是可视化的，它给你提供各种对象，比如视频、图像、声音、文字等，你直接拖拽它们到空白的模板上，摆好位置。这个过程你是看得到的。但是PTB是半可视化的，你需要先写脚本代码，使用这些代码在空白的窗口上来绘制刺激。如果你不运行这些脚本代码，你是无法看到这些窗口和刺激的。而这很容易会让你的代码产生bug。<br><br>这里先介绍5个最基础的函数让你体验PTB。<br><br>废话不多说。<br><br># 1 创建主页面<br><br>或者我常叫它开屏，就是开启屏幕；如果你的实验有特殊要求，也可以开启多个屏幕。<br><br>    [windowPtr,rect]=Screen(‘OpenWindow’,windowPtrOrScreenNumber[,color][,rect] [,pixelSize][,numberOfBuffers][,stereomode] [,multisample] [,imagingmode][,specialFlags][,clientRect]);<br><br>然后我们介绍一下这些参数：<br><br><font color="red">(在[   ]里的参数是可选参数不是必须参数，即不是一定要去设置的，可以不用设置保持默认值即可)</font>
-
-
+        <p>matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。<br><a id="more"></a></p>
+<p>matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。当然到目前为止是静态的，要让它像ppt一样动起来，你还需要使用其他操作类函数来实现，让窗口一个个切换、悬停、与人进行互动、获取外界的反应比如按键和声音、获取反应时，以及把你想要得到的数据，记录下来。</p>
+<p>PTB跟E-Prime不同的是，后者的实验程序编写是可视化的，它给你提供各种对象，比如视频、图像、声音、文字等，你直接拖拽它们到空白的模板上，摆好位置。这个过程你是看得到的。但是PTB是半可视化的，你需要先写脚本代码，使用这些代码在空白的窗口上来绘制刺激。如果你不运行这些脚本代码，你是无法看到这些窗口和刺激的。而这很容易会让你的代码产生bug。</p>
+<p>这里先介绍5个最基础的函数让你体验PTB。</p>
+<p>废话不多说。</p>
+<h1 id="1-创建主页面"><a href="#1-创建主页面" class="headerlink" title="1 创建主页面"></a>1 创建主页面</h1><p>或者我常叫它开屏，就是开启屏幕；如果你的实验有特殊要求，也可以开启多个屏幕。</p>
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,windowPtrOrScreenNumber[,color] [,rect] [,pixelSize] [,numberOfBuffers] [,stereomode] [,multisample] [,imagingmode] [,specialFlags] [,clientRect]);
+</code></pre><p>我们先介绍一下这些参数：</p>
+<blockquote>
+<p>注意一下，在[   ]里的参数是可选参数不是必须参数，即不是一定要去设置的，可以不用设置保持默认值即可</p>
+</blockquote>
 <p><strong>①windowPtr</strong>，函数的第一个返回值。当你使用这个函数开启屏幕的时候，这个函数会返回此屏幕的句柄，或者叫指针。这个返回值是必需的，因为我们的所有刺激呈现都是基于Screen函数的，所以这个句柄的作用就是一个连接所有的Screen函数。比如说我开启了一个屏幕，并且返回了这个参数，假设它的值是1，也就是说，这个值就是这个屏幕的符号或者说编号，它告诉后面所有的Screen函数，你们都要在这个编号为1的屏幕上工作。</p>
 <p><strong>②rect</strong>，函数的第二个返回值。它返回的是一个数组，就是你开启的屏幕的大小，单位是像素。比如我在我的电脑上开启了屏幕，默认全屏开启，那么这个rect返回的就是我的电脑屏幕的尺寸大小，2736x1824，当然它的形式是数组的形式，就是[0，0，2736，1824]这样的。这个返回值并不是必需的。如果你的程序只是想在你的电脑上运行，那么这个参数基本上是不需要的。如果你的程序是想在多个电脑上运行，而且这些电脑的屏幕尺寸大小不一样，那就有必要获取这个参数，后面刺激的呈现要在此基础上进行调整。</p>
 <p>为什么这么说？因为每个电脑的屏幕大小不一样，而PTB的绘制类函数都是需要使用坐标来进行绘制。比方说，我的电脑是宽2736x高1824，现在我在中间的位置[1368，912]绘制一个圆，暂且不管这个圆的大小。我们现在把这个程序拿到另一台电脑上运行，假如这个电脑屏幕尺寸是1920x1080，对它来说，它的中间位置是[960，540]，而圆的坐标还是[1368，912]，那么它会出现在哪？肯定不是正中间，而且还会偏离中间很远。</p>
@@ -73,11 +79,11 @@
 <p><strong>⑨specialFlags</strong>，基本用不到，我也不知道怎么用。</p>
 <p><strong>⑩clientRect</strong>，指定绘制区域大小，对绘制内容进行缩放处理，也基本用不到。</p>
 <p>能用得到基本就是前几个参数。我们的第一条代码：</p>
-<pre><code>[Wptr,rect] = Screen(&apos;OpenWindow&apos;,0); %表示开启屏幕，只设置第一个参数，后面全都默认就行
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0); %表示开启屏幕，只设置第一个参数，后面全都默认就行
 </code></pre><p>如果对屏幕颜色有要求，就：</p>
-<pre><code>[Wptr,rect] = Screen(&apos;OpenWindow&apos;,0,[250,0,0]); %开启红色屏幕
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0,[250,0,0]); %开启红色屏幕
 </code></pre><p>如果对屏幕大小有要求，就：</p>
-<pre><code>[Wptr,rect] = Screen(&apos;OpenWindow&apos;,0,[250,0,0],[0,0,1200,1200]); %开启1200像素的正方形红色窗口
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0,[250,0,0],[0,0,1200,1200]); %开启1200像素的正方形红色窗口
 </code></pre><h1 id="2-切换页面"><a href="#2-切换页面" class="headerlink" title="2 切换页面"></a>2 切换页面</h1><pre><code>[VBLTimestamp, StimulusOnsetTime, FlipTimestamp,Missed, Beampos] = Screen(&apos;Flip&apos;, windowPtr [, when] [, dontclear] [, dontsync] [, multiflip]);
 </code></pre><p><strong>①VBLTimestamp</strong>，返回值，记录页面切换开始时刻的时间。</p>
 <p><strong>②StimulusOnsetTime</strong>，返回值，记录刺激呈现时刻的时间。</p>
@@ -92,8 +98,7 @@
 <pre><code>Screen(&apos;Flip&apos;,windowPtr); %马上切换页面
 </code></pre><p>其他参数不需要管，如果你需要切换的时间这类的返回值，在前面自己加上即可。</p>
 <h1 id="3-关闭屏幕"><a href="#3-关闭屏幕" class="headerlink" title="3 关闭屏幕"></a>3 关闭屏幕</h1><pre><code>Screen(&apos;Close&apos;, windowPtr);
-</code></pre><p>或者</p>
-<p>关闭所有屏幕</p>
+</code></pre><p>或者，关闭所有屏幕：</p>
 <pre><code>Screen(&apos;CloseAll&apos;);
 
 sca；
@@ -107,7 +112,7 @@ sca；
 <p><strong>③whenSecs</strong>，指定直到什么时间结束等待。</p>
 <p>一般使用第一个形式，返回值是否需要视情况而定，一般不需要，代码可以直接写：</p>
 <pre><code>WaitSecs(1); %等待1秒。
-</code></pre><h1 id="5-绘制文本"><a href="#5-绘制文本" class="headerlink" title="5 绘制文本"></a>5 绘制文本</h1><pre><code>[newX, newY]=Screen(&apos;DrawText&apos;, windowPtr, text [,x] [,y] [,color] [,backgroundColor] [,yPositionIsBaseline] [,swapTextDirection]);
+</code></pre><h1 id="输出文本"><a href="#输出文本" class="headerlink" title="输出文本"></a>输出文本</h1><pre><code>[newX, newY]=Screen(&apos;DrawText&apos;, windowPtr, text [,x] [,y] [,color] [,backgroundColor] [,yPositionIsBaseline] [,swapTextDirection]);
 </code></pre><p><strong>①newX, newY</strong>，两个返回值，是一个坐标，返回得到文本绘制后，画笔所在的坐标位置。基本不需要</p>
 <p><strong>②windowPtr</strong>，屏幕句柄，不多说。</p>
 <p><strong>③text</strong>，文本内容，需要用英文输入法下的单引号包括。如果内容是中文，需要使用double（）函数转换。</p>
@@ -115,10 +120,12 @@ sca；
 <p><strong>⑤color</strong>，指定文本颜色，默认黑色，可以是0~255，也可以是[R,G,B]。</p>
 <p><strong>⑥backgroundColor</strong>，指定文本的背景颜色，默认透明（即没有背景色）。一般不需要，如果需要，可以结合textBackgroundColor函数使用。</p>
 <p><strong>⑦yPositionIsBaseline</strong>，指定是否把坐标y当作文本基线，默认0，不需要。</p>
-<p><strong>⑧swapTextDirection</strong>，指定文本输出方向，默认0，即从左到右，如果1则从右到左。（如需要水平和垂直输出可以使用另一个函数DrawFormattedText）</p>
+<p><strong>⑧swapTextDirection</strong>，指定文本输出方向，默认0，即从左到右，如果1则从右到左。（如需要水平和垂直输出可以使用另一个函数DrawFormattedText）。</p>
 <p>一般使用代码为：</p>
 <pre><code>Screen(&apos;DrawText&apos;,windowPtr,&apos;text&apos;,rect(3)/2,rect(4)/2); %在以屏幕中点为起始点输出文本内容
-</code></pre><p>了解这5个函数之后，我们就可以开始初步体验PTB了：</p>
+</code></pre><blockquote>
+<p>了解这5个函数之后，我们就可以开始初步体验PTB了：</p>
+</blockquote>
 <pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0); %开启屏幕
 
 Screen(&apos;DrawText&apos;,windowPtr,&apos;Hello World&apos;,rect(3)/2,rect(4)/2); %在中央坐标绘制&apos;Hello World&apos;文本
@@ -128,12 +135,12 @@ Screen(&apos;Flip&apos;,windowPtr); %页面切换
 WaitSecs(2); %等待2秒
 
 Screen(&apos;CloseAll&apos;); %关闭所有屏幕
-</code></pre><p>复制这5行代码到matlab的m文件，运行一下试试。</p></font><p></p>
+</code></pre><p>复制这5行代码到matlab的m文件，运行一下试试。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/30/5个函数开启psychtoolbox初体验/" data-id="cjxixm903000038u8ccyoe1z0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/30/PTB从入门到放弃— 1、psychtoolbox5个基础函数/" data-id="cjxizqq1d00018ku8i2fa24kh" class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
 
@@ -147,7 +154,7 @@ Screen(&apos;CloseAll&apos;); %关闭所有屏幕
     
     
       <a href="/2018/04/10/所谓梦想/" class="article-nav-link">
-        <strong class="article-nav-caption">Olde posts</strong>
+        <strong class="article-nav-caption">后一篇</strong>
         <div class="article-nav-title">所谓梦想</div>
       </a>
     
@@ -198,25 +205,25 @@ Screen(&apos;CloseAll&apos;); %关闭所有屏幕
   <ul class="nav nav-main">
     
       <li class="nav-item">
-        <a class="nav-item-link" href="/">Home</a>
+        <a class="nav-item-link" href="/">主页</a>
       </li>
     
       <li class="nav-item">
-        <a class="nav-item-link" href="/archives">Archives</a>
+        <a class="nav-item-link" href="/archives">归档</a>
       </li>
     
       <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">Gallery</a>
+        <a class="nav-item-link" href="/gallery">相册</a>
       </li>
     
       <li class="nav-item">
-        <a class="nav-item-link" href="/about">About</a>
+        <a class="nav-item-link" href="/about">关于</a>
       </li>
     
     <li class="nav-item">
       <a class="nav-item-link nav-item-search" title="搜索">
         <i class="fe fe-search"></i>
-        Search
+        搜索
       </a>
     </li>
   </ul>
