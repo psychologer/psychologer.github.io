@@ -58,7 +58,7 @@
 <p>第一种文字型，缺点很多，主要是比较复杂，需要写比较多的代码，耗时耗力；而且matlab的中文支持貌似也很差，需要经过各种字符转换和编码转换。优点也有，就是能够匹配任一台电脑。当然这个优点其实可有可无。所以我一般不会用这种方式呈现指导语。</p>
 <p>第二种图片型，会比较简单。思路就是先把指导语打印在一张图片上，然后在PTB里面使用DrawTexture或者PutImage的方式呈现出来。需要的代码跟文字型比起来，简直少得不能再少。所以关于指导语呈现就学这样的方式就够了，省时省力。</p>
 <p>如果你会Photoshop这种类似的图片编辑技能的话，那把文字打印在一张空白图片上对你来说应该轻而易举。如果不会PS，那PPT总会吧？新建空白ppt把指导语打上去，然后另存为图片就可以了，关于图片尺寸也是可以自己在ppt上调整的。如果你跟我说不会把ppt另存为图片，截图总会吧？直接截取ppt上的指导语然后保存成图片。</p>
-<p>有了指导语图片后，我们先使用<strong>imread（）函数</strong>读取这张图片为二进制矩阵。</p>
+<p>有了指导语图片后，我们先使用<strong><code>imread（）</code>函数</strong>读取这张图片为二进制矩阵。</p>
 <pre><code>Image = imread（filename）；
 </code></pre><p>filename就是图片文件名。如果你喜欢简单粗暴点的，下一步就可以直接把图片打印到屏幕上了。</p>
 <pre><code>Screen(&apos;PutImage&apos;,WindowPtr,Image);
@@ -82,7 +82,7 @@ Screen(&apos;DrawTexture&apos;,Wptr,imgnoise);
 </code></pre><p>输出的结果就是：</p>
 <p><img src="https://hbimg.huabanimg.com/cc76cf2a447ae677e4d9db9dc47d3657dec6daf5116d0-u26QKd_fw658" alt="noise"></p>
 <p>有时候我们也经常需要用到光栅。</p>
-<p>那么首先了解一下meshgrid(x,y)函数，它是用来生成二维网格矩阵的。如：</p>
+<p>那么首先了解一下<code>meshgrid(x,y)</code>函数，它是用来生成二维网格矩阵的。如：</p>
 <pre><code>[a,b] = meshgrid(1:4,1:5)；
 </code></pre><p>结果输出：</p>
 <pre><code>a =
@@ -106,7 +106,7 @@ b =
 </code></pre><p>生成的x和y都是100行100列，而x的每一行都是1：100，y的每一列都是1：100.就像一张网格一样。</p>
 <p>然后我们用正弦函数转换一下并输出图片。</p>
 <pre><code>imshow(sin(x))
-</code></pre><p>imshow（）函数是显示图片。结果是：</p>
+</code></pre><p><code>imshow（）</code>函数是显示图片。结果是：</p>
 <p><img src="https://hbimg.huabanimg.com/1a79b34fef47a8d8d27d0eb3860c3cbdefbe79213bcd-15t7FP_fw658" alt="grating1"></p>
 <p>或者：</p>
 <pre><code>imshow(sin(x+y))
@@ -151,7 +151,7 @@ end
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/01/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" data-id="cjxk5brjc0006uku82yrw4py1"
+      <a data-url="http://yoursite.com/2019/07/01/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" data-id="cjxk6fzjv0003csu86uvco1zc"
          class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
