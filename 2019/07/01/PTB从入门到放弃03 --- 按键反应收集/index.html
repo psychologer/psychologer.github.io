@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    PTB从入门到放弃03 --- 按键反应收集 |
+    
+    乙酰胆碱</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-PTB从入门到放弃03 --- 按键反应收集" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PTB从入门到放弃03 --- 按键反应收集
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/" class="article-date">
+  <time datetime="2019-07-01T03:00:00.000Z" itemprop="datePublished">2019-07-01</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <p>在02里面只提到了按键等待，但是认知行为实验是需要收集被试的按键反应的正确与错误的信息以及反应正确时被试的反应时的。我们需要先收集被试的按键，然后再让程序自己拿这个被试的按键去与已经写好的正确与否判断语句进行匹配，然后反应正确，记录下这个反应时，存到数据变量里。
+&lt;!-- more --&gt;</p>
+<p>在进行按键反应收集之前，我们需要做的，就是设置好相应的键码。</p>
+<h4>1 设置键码</h4>
+<pre><code>KbNameResult = KbName(arg);
+</code></pre>
+<p>该函数是用来设置键盘码的。返回值<strong>KbNameResult</strong>返回键的扫描码。扫描码采取的貌似是ASCII码。比如<code>KbName('space')</code>空格键对应的是32，也就是返回值是32。</p>
+<p>参数<strong>arg</strong>是指定键名，比如回车是return，空格是space，a就是a这样的。</p>
+<p>因为电脑系统和设备有可能不同，比如windows和mac os，键盘码就有可能不同，所以在每个程序最开始，建议都统一键盘码。</p>
+<pre><code>KbName('UnifyKeyNames'); %统一键盘码
+</code></pre>
+<p>假如实验需要用到的按键是a和l，那么我们就设置：</p>
+<pre><code>kba = KbName('a');
+kbl = KbName('l');
+</code></pre>
+<p>变量kba和kbl就是得到的a和l键返回的扫描码。</p>
+<h4>2 限制按键</h4>
+<p>键盘上的按键很多，有时候怕被试不小心按错，而我们的程序刚好也没有对那些按键采取相应的措施，造成数据异常是一回事。如果不小心按到一些关键按键，导致实验程序崩溃那就更惨了。</p>
+<p>为了避免这种错误的发生，我们可以对按键范围进行限制。</p>
+<p><code>RestrictKeysForKbCheck()</code>函数就是用来对按键范围进行限制的。</p>
+<p>比如我们只要被试对a和l键进行反应，其他按键完全不需要：</p>
+<pre><code>RestrictKeysForKbCheck([KbName('a') KbName('l')]);
+</code></pre>
+<p>那么在这之后，除了a和l键之外，程序不会对其他键产生任何反应。</p>
+<p>如果有其他特殊按键，比如设置按Esc键退出程序，也可以加上该按键，这个限制范围完全由你决定。</p>
+<h4>3 按键判断</h4>
+<pre><code>[keyIsDown, secs, keyCode, deltaSecs] = KbCheck([deviceNumber]);
+</code></pre>
+<p>4个返回值。</p>
+<p><strong>keyIsDown</strong>，如果有任意的按键行为产生，返回1。</p>
+<p><strong>secs</strong>，跟<code>KbWait()</code>的一样，返回按键产生的时间。</p>
+<p><strong>keyCode</strong>，返回按键的扫描码。和KbName的返回值一样，比如空格space，返回32。</p>
+<p><strong>deltaSecs</strong>，跟<code>KbWait()</code>的一样，返回按键产生时间的置信区间。一般用不到。</p>
+<p>1个参数。</p>
+<p><strong>deviceNumber</strong>，指定查询的键盘设备，如果只有一个键盘，默认即可，不需要设置。</p>
+<pre><code>while true
+    [~,secs,keyCode]= KbCheck;
+    if any(keyCode) %对于任意的按键
+		if keyCode(kba) %如果按的是a键
+			if 判断呈现的刺激是否与反应匹配，如果是
+				语句块（反应正确，一般记录下反应时）
+				反应时=secs-刺激呈现时的时间
+			else
+				语句块（反应错误时你要做的事）
+			end
+			break; %跳出while循环
+		elseif keyCode(kbl) %如果按的是l键
+			if 判断呈现的刺激是否与反应匹配，如果是
+				语句块（反应正确，一般记录下反应时）
+				反应时=secs-刺激呈现时的时间
+			else
+				语句块（反应错误时你要做的事）
+			end
+			break; %跳出while循环
+		end
+	end
+end
+</code></pre>
+<p>这就是一个简单的按键判断过程原理。先判断按键是什么，再判断这个按键行为是否与刺激匹配，如果匹配，就是正确反应时，那么记录下这个反应时，以及其他你所需要的信息，保存好。然后跳出这个循环，进行下一试次。</p>
+<h4>4 反应时获取</h4>
+<pre><code>GetSecs
+</code></pre>
+<p>这个函数是用来获取当前时间值的。它获取的时间精度据说特别高。一般是毫秒级别，如果电脑系统配置了更高精度的时钟，它能达到微秒级。</p>
+<p>在刺激呈现时，使用</p>
+<pre><code>t_start = GetSecs;
+</code></pre>
+<p>获取刺激呈现的时间点，然后KbCheck返回的按键时间点secs-t_start就等于被试的反应时间。</p>
+<pre><code>restime = secs-t_start;
+</code></pre>
+<p>该句可以加进去上面KbCheck判断里按键与刺激匹配的语句块里，把时间赋值给变量restime。当然我们一般不这么存储数据，在后面我会讲到存储数据的方式。这里只先简单介绍怎么得到反应时。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/" data-id="cjxla10ik0005gou8js7o44tr"
+         class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 乙酰胆碱</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="乙酰胆碱"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+      <li class="nav-item">
+          <div class="totop" id="totop">
+    <i class="fe fe-rocket"></i>
+</div>
+      </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
