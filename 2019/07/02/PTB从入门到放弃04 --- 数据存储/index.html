@@ -149,7 +149,7 @@ ans =
 </code></pre><p>同理，<code>zeros(n)</code>，就是生成n*n的值为0的矩阵。</p>
 <p>我最经常使用的也是建立0矩阵来保存数据。</p>
 <h4 id="3-数据存放"><a href="#3-数据存放" class="headerlink" title="3 数据存放"></a>3 数据存放</h4><p>假如现在我的一个实验正式阶段有5个block，每个block有100个trial，总共就有500个trial。再有，我的实验因变量只需要被试的反应时，那么最简单的，我建立一个500*2的矩阵来存放数据就够了，第一行用来存放trial序号，第二行用来存放反应时。</p>
-<p><img src="C:\博客\picture\datasavepicture1.png" alt="datasavep1"></p>
+<p><img src="https://hbimg.huabanimg.com/3f9bd61cac18b67496c4db493f47ca43873e623b165d7-ecfI2W_fw658" alt="datasavep1"></p>
 <pre><code>for trial = 1:500
     data = zeros(500,2); %生成500行*2列的0矩阵
     data(trial,1) = trial; %把trial变量的值赋值给第trial行第1列
@@ -169,7 +169,7 @@ end
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/02/PTB从入门到放弃04 --- 数据存储/" data-id="cjxlg2ssh000650u8eftaea9y"
+      <a data-url="http://yoursite.com/2019/07/02/PTB从入门到放弃04 --- 数据存储/" data-id="cjxlg8q5300066gu8j1m8vmgu"
          class="article-share-link">分享</a>
       
     </footer>
