@@ -53,17 +53,14 @@
       
 
       
-        <p>matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。</p>
-<p>&lt;!-- more --&gt;</p>
+        <p>matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。<br><a id="more"></a></p>
 <p>当然到目前为止是静态的，要让它像ppt一样动起来，你还需要使用其他操作类函数来实现，让窗口一个个切换、悬停、与人进行互动、获取外界的反应比如按键和声音、获取反应时，以及把你想要得到的数据，记录下来。</p>
 <p>PTB跟E-Prime不同的是，后者的实验程序编写是可视化的，它给你提供各种对象，比如视频、图像、声音、文字等，你直接拖拽它们到空白的模板上，摆好位置。这个过程你是看得到的。但是PTB是半可视化的，你需要先写脚本代码，使用这些代码在空白的窗口上来绘制刺激。如果你不运行这些脚本代码，你是无法看到这些窗口和刺激的。而这很容易会让你的代码产生bug。</p>
 <p>这里先介绍5个最基础的函数让你体验PTB。</p>
 <p>废话不多说。</p>
-<h1>1 创建主页面</h1>
-<p>或者我常叫它开屏，就是开启屏幕；如果你的实验有特殊要求，也可以开启多个屏幕。</p>
-<pre><code>[windowPtr,rect] = Screen('OpenWindow',windowPtrOrScreenNumber[,color] [,rect] [,pixelSize] [,numberOfBuffers] [,stereomode] [,multisample] [,imagingmode] [,specialFlags] [,clientRect]);
-</code></pre>
-<p>我们先介绍一下这些参数：</p>
+<h1 id="1-创建主页面"><a href="#1-创建主页面" class="headerlink" title="1 创建主页面"></a>1 创建主页面</h1><p>或者我常叫它开屏，就是开启屏幕；如果你的实验有特殊要求，也可以开启多个屏幕。</p>
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,windowPtrOrScreenNumber[,color] [,rect] [,pixelSize] [,numberOfBuffers] [,stereomode] [,multisample] [,imagingmode] [,specialFlags] [,clientRect]);
+</code></pre><p>我们先介绍一下这些参数：</p>
 <blockquote>
 <p>注意一下，在[   ]里的参数是可选参数不是必须参数，即不是一定要去设置的，可以不用设置保持默认值即可</p>
 </blockquote>
@@ -82,18 +79,13 @@
 <p><strong>⑨specialFlags</strong>，基本用不到，我也不知道怎么用。</p>
 <p><strong>⑩clientRect</strong>，指定绘制区域大小，对绘制内容进行缩放处理，也基本用不到。</p>
 <p>能用得到基本就是前几个参数。我们的第一条代码：</p>
-<pre><code>[windowPtr,rect] = Screen('OpenWindow',0); %表示开启屏幕，只设置第一个参数，后面全都默认就行
-</code></pre>
-<p>如果对屏幕颜色有要求，就：</p>
-<pre><code>[windowPtr,rect] = Screen('OpenWindow',0,[250,0,0]); %开启红色屏幕
-</code></pre>
-<p>如果对屏幕大小有要求，就：</p>
-<pre><code>[windowPtr,rect] = Screen('OpenWindow',0,[250,0,0],[0,0,1200,1200]); %开启1200像素的正方形红色窗口
-</code></pre>
-<h1>2 切换页面</h1>
-<pre><code>[VBLTimestamp, StimulusOnsetTime, FlipTimestamp,Missed, Beampos] = Screen('Flip', windowPtr [, when] [, dontclear] [, dontsync] [, multiflip]);
-</code></pre>
-<p><strong>①VBLTimestamp</strong>，返回值，记录页面切换开始时刻的时间。</p>
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0); %表示开启屏幕，只设置第一个参数，后面全都默认就行
+</code></pre><p>如果对屏幕颜色有要求，就：</p>
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0,[250,0,0]); %开启红色屏幕
+</code></pre><p>如果对屏幕大小有要求，就：</p>
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0,[250,0,0],[0,0,1200,1200]); %开启1200像素的正方形红色窗口
+</code></pre><h1 id="2-切换页面"><a href="#2-切换页面" class="headerlink" title="2 切换页面"></a>2 切换页面</h1><pre><code>[VBLTimestamp, StimulusOnsetTime, FlipTimestamp,Missed, Beampos] = Screen(&apos;Flip&apos;, windowPtr [, when] [, dontclear] [, dontsync] [, multiflip]);
+</code></pre><p><strong>①VBLTimestamp</strong>，返回值，记录页面切换开始时刻的时间。</p>
 <p><strong>②StimulusOnsetTime</strong>，返回值，记录刺激呈现时刻的时间。</p>
 <p><strong>③FlipTimestamp</strong>，返回值，记录页面切换结束时刻的时间，FlipTimestamp-VBLTimestamp=一次页面切换的时间。</p>
 <p><strong>④Missed</strong>，返回值，是否发生帧丢失，&gt;0表示丢失，&lt;0表示未丢失。</p>
@@ -103,34 +95,25 @@
 <p><strong>⑧dontclear</strong>，指定是否清除帧缓冲，默认值0，表示页面切换后马上清除，1表示不清除，但是会向缓冲区继续绘制新的内容。意思是比如你呈现了一个矩形，下一个页面你要呈现一个圆形，在页面切换的时候如果你不清除这个页面的缓冲，就不会在空白页面上绘制圆形，而是在本来就有一个矩形的页面上继续绘制一个圆形，后面呈现出来的就是一个带有圆形和矩形的界面。</p>
 <p><strong>⑨multiflip</strong>，指定是否切换所有主页面，默认值是0，只切换一个显示器的主页面，如果&gt;0，就是切换所有显示器的页面。一般用不到。</p>
 <p>一般使用的代码是：</p>
-<pre><code>Screen('Flip',windowPtr); %马上切换页面
-</code></pre>
-<p>其他参数不需要管，如果你需要切换的时间这类的返回值，在前面自己加上即可。</p>
-<h1>3 关闭屏幕</h1>
-<pre><code>Screen('Close', windowPtr);
-</code></pre>
-<p>或者，关闭所有屏幕：</p>
-<pre><code>Screen('CloseAll');
+<pre><code>Screen(&apos;Flip&apos;,windowPtr); %马上切换页面
+</code></pre><p>其他参数不需要管，如果你需要切换的时间这类的返回值，在前面自己加上即可。</p>
+<h1 id="3-关闭屏幕"><a href="#3-关闭屏幕" class="headerlink" title="3 关闭屏幕"></a>3 关闭屏幕</h1><pre><code>Screen(&apos;Close&apos;, windowPtr);
+</code></pre><p>或者，关闭所有屏幕：</p>
+<pre><code>Screen(&apos;CloseAll&apos;);
 
 sca；
-</code></pre>
-<h1>4 等待时间</h1>
-<pre><code>[realWakeupTimeSecs] = WaitSecs(waitPeriodSecs); 
+</code></pre><h1 id="4-等待时间"><a href="#4-等待时间" class="headerlink" title="4 等待时间"></a>4 等待时间</h1><pre><code>[realWakeupTimeSecs] = WaitSecs(waitPeriodSecs); 
 
-[realWakeupTimeSecs] = WaitSecs('UntilTime', whenSecs);
+[realWakeupTimeSecs] = WaitSecs(&apos;UntilTime&apos;, whenSecs);
 
-[realWakeupTimeSecs] = WaitSecs('YieldSecs', waitPeriodSecs);
-</code></pre>
-<p><strong>①realWakeupTimeSecs</strong>，返回值，返回等待结束时的系统时间。</p>
+[realWakeupTimeSecs] = WaitSecs(&apos;YieldSecs&apos;, waitPeriodSecs);
+</code></pre><p><strong>①realWakeupTimeSecs</strong>，返回值，返回等待结束时的系统时间。</p>
 <p><strong>②waitPeriodSecs</strong>，指定等待时间，单位是秒，如1就是1秒，0.5就是500毫秒。理想情况下可以精确到1毫秒。</p>
 <p><strong>③whenSecs</strong>，指定直到什么时间结束等待。</p>
 <p>一般使用第一个形式，返回值是否需要视情况而定，一般不需要，代码可以直接写：</p>
 <pre><code>WaitSecs(1); %等待1秒。
-</code></pre>
-<h1>输出文本</h1>
-<pre><code>[newX, newY]=Screen('DrawText', windowPtr, text [,x] [,y] [,color] [,backgroundColor] [,yPositionIsBaseline] [,swapTextDirection]);
-</code></pre>
-<p><strong>①newX, newY</strong>，两个返回值，是一个坐标，返回得到文本绘制后，画笔所在的坐标位置。基本不需要</p>
+</code></pre><h1 id="输出文本"><a href="#输出文本" class="headerlink" title="输出文本"></a>输出文本</h1><pre><code>[newX, newY]=Screen(&apos;DrawText&apos;, windowPtr, text [,x] [,y] [,color] [,backgroundColor] [,yPositionIsBaseline] [,swapTextDirection]);
+</code></pre><p><strong>①newX, newY</strong>，两个返回值，是一个坐标，返回得到文本绘制后，画笔所在的坐标位置。基本不需要</p>
 <p><strong>②windowPtr</strong>，屏幕句柄，不多说。</p>
 <p><strong>③text</strong>，文本内容，需要用英文输入法下的单引号包括。如果内容是中文，需要使用double（）函数转换。</p>
 <p><strong>④x，y</strong>，指定文本绘制的起始坐标，默认从原点[0，0]开始。</p>
@@ -139,27 +122,25 @@ sca；
 <p><strong>⑦yPositionIsBaseline</strong>，指定是否把坐标y当作文本基线，默认0，不需要。</p>
 <p><strong>⑧swapTextDirection</strong>，指定文本输出方向，默认0，即从左到右，如果1则从右到左。（如需要水平和垂直输出可以使用另一个函数DrawFormattedText）。</p>
 <p>一般使用代码为：</p>
-<pre><code>Screen('DrawText',windowPtr,'text',rect(3)/2,rect(4)/2); %在以屏幕中点为起始点输出文本内容
-</code></pre>
-<blockquote>
+<pre><code>Screen(&apos;DrawText&apos;,windowPtr,&apos;text&apos;,rect(3)/2,rect(4)/2); %在以屏幕中点为起始点输出文本内容
+</code></pre><blockquote>
 <p>了解这5个函数之后，我们就可以开始初步体验PTB了：</p>
 </blockquote>
-<pre><code>[windowPtr,rect] = Screen('OpenWindow',0); %开启屏幕
+<pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0); %开启屏幕
 
-Screen('DrawText',windowPtr,'Hello World',rect(3)/2,rect(4)/2); %在中央坐标绘制'Hello World'文本
+Screen(&apos;DrawText&apos;,windowPtr,&apos;Hello World&apos;,rect(3)/2,rect(4)/2); %在中央坐标绘制&apos;Hello World&apos;文本
 
-Screen('Flip',windowPtr); %页面切换
+Screen(&apos;Flip&apos;,windowPtr); %页面切换
 
 WaitSecs(2); %等待2秒
 
-Screen('CloseAll'); %关闭所有屏幕
-</code></pre>
-<p>复制这5行代码到matlab的m文件，运行一下试试。</p>
+Screen(&apos;CloseAll&apos;); %关闭所有屏幕
+</code></pre><p>复制这5行代码到matlab的m文件，运行一下试试。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/" data-id="cjxla10i80000gou8ad10cb7k"
+      <a data-url="http://yoursite.com/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/" data-id="cjxla5vt00001fcu89smru31y"
          class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
