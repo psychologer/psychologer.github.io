@@ -1,64 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    PTB从入门到放弃01 --- psychtoolbox5个基础函数 |
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>PTB从入门到放弃01 --- psychtoolbox5个基础函数 | 诸法空相</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
     
-    诸法空相</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
 </head>
-</html>
 <body>
-<main class="content">
-  <section class="outer">
-  <article id="post-PTB从入门到放弃01 --- psychtoolbox5个基础函数" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">主页</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
 
-  <div class="article-inner">
+        </div>
+    </nav>
+
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      PTB从入门到放弃01 --- psychtoolbox5个基础函数
-    </h1>
-  
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">主页</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
 
-      </header>
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
     
 
     
-      <div class="article-meta">
-        <a href="/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/" class="article-date">
-  <time datetime="2019-06-28T07:00:00.000Z" itemprop="datePublished">2019-06-28</time>
-</a>
-        
-      </div>
-    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">PTB从入门到放弃01 --- psychtoolbox5个基础函数</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Lee</a>
+                    
 
-    <div class="article-entry" itemprop="articleBody">
-      
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2019-06-28&nbsp;&nbsp;15:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/psychtoolbox/">psychtoolbox</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
 
-      
-
-      
-        <p>matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。<br><a id="more"></a></p>
+        <div class="post-content">
+            <p>matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。<br><a id="more"></a></p>
 <p>当然到目前为止是静态的，要让它像ppt一样动起来，你还需要使用其他操作类函数来实现，让窗口一个个切换、悬停、与人进行互动、获取外界的反应比如按键和声音、获取反应时，以及把你想要得到的数据，记录下来。</p>
 <p>PTB跟E-Prime不同的是，后者的实验程序编写是可视化的，它给你提供各种对象，比如视频、图像、声音、文字等，你直接拖拽它们到空白的模板上，摆好位置。这个过程你是看得到的。但是PTB是半可视化的，你需要先写脚本代码，使用这些代码在空白的窗口上来绘制刺激。如果你不运行这些脚本代码，你是无法看到这些窗口和刺激的。而这很容易会让你的代码产生bug。</p>
 <p>这里先介绍5个最基础的函数让你体验PTB。</p>
 <p>废话不多说。</p>
-<h1 id="1-创建主页面"><a href="#1-创建主页面" class="headerlink" title="1 创建主页面"></a>1 创建主页面</h1><p>或者我常叫它开屏，就是开启屏幕；如果你的实验有特殊要求，也可以开启多个屏幕。</p>
+<h3 id="1-创建主页面"><a href="#1-创建主页面" class="headerlink" title="1 创建主页面"></a>1 创建主页面</h3><p>或者我常叫它开屏，就是开启屏幕；如果你的实验有特殊要求，也可以开启多个屏幕。</p>
 <pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,windowPtrOrScreenNumber[,color] [,rect] [,pixelSize] [,numberOfBuffers] [,stereomode] [,multisample] [,imagingmode] [,specialFlags] [,clientRect]);
 </code></pre><p>我们先介绍一下这些参数：</p>
 <blockquote>
@@ -84,7 +225,7 @@
 <pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0,[250,0,0]); %开启红色屏幕
 </code></pre><p>如果对屏幕大小有要求，就：</p>
 <pre><code>[windowPtr,rect] = Screen(&apos;OpenWindow&apos;,0,[250,0,0],[0,0,1200,1200]); %开启1200像素的正方形红色窗口
-</code></pre><h1 id="2-切换页面"><a href="#2-切换页面" class="headerlink" title="2 切换页面"></a>2 切换页面</h1><pre><code>[VBLTimestamp, StimulusOnsetTime, FlipTimestamp,Missed, Beampos] = Screen(&apos;Flip&apos;, windowPtr [, when] [, dontclear] [, dontsync] [, multiflip]);
+</code></pre><h3 id="2-切换页面"><a href="#2-切换页面" class="headerlink" title="2 切换页面"></a>2 切换页面</h3><pre><code>[VBLTimestamp, StimulusOnsetTime, FlipTimestamp,Missed, Beampos] = Screen(&apos;Flip&apos;, windowPtr [, when] [, dontclear] [, dontsync] [, multiflip]);
 </code></pre><p><strong>①VBLTimestamp</strong>，返回值，记录页面切换开始时刻的时间。</p>
 <p><strong>②StimulusOnsetTime</strong>，返回值，记录刺激呈现时刻的时间。</p>
 <p><strong>③FlipTimestamp</strong>，返回值，记录页面切换结束时刻的时间，FlipTimestamp-VBLTimestamp=一次页面切换的时间。</p>
@@ -97,12 +238,12 @@
 <p>一般使用的代码是：</p>
 <pre><code>Screen(&apos;Flip&apos;,windowPtr); %马上切换页面
 </code></pre><p>其他参数不需要管，如果你需要切换的时间这类的返回值，在前面自己加上即可。</p>
-<h1 id="3-关闭屏幕"><a href="#3-关闭屏幕" class="headerlink" title="3 关闭屏幕"></a>3 关闭屏幕</h1><pre><code>Screen(&apos;Close&apos;, windowPtr);
+<h3 id="3-关闭屏幕"><a href="#3-关闭屏幕" class="headerlink" title="3 关闭屏幕"></a>3 关闭屏幕</h3><pre><code>Screen(&apos;Close&apos;, windowPtr);
 </code></pre><p>或者，关闭所有屏幕：</p>
 <pre><code>Screen(&apos;CloseAll&apos;);
 
 sca；
-</code></pre><h1 id="4-等待时间"><a href="#4-等待时间" class="headerlink" title="4 等待时间"></a>4 等待时间</h1><pre><code>[realWakeupTimeSecs] = WaitSecs(waitPeriodSecs); 
+</code></pre><h3 id="4-等待时间"><a href="#4-等待时间" class="headerlink" title="4 等待时间"></a>4 等待时间</h3><pre><code>[realWakeupTimeSecs] = WaitSecs(waitPeriodSecs); 
 
 [realWakeupTimeSecs] = WaitSecs(&apos;UntilTime&apos;, whenSecs);
 
@@ -112,7 +253,7 @@ sca；
 <p><strong>③whenSecs</strong>，指定直到什么时间结束等待。</p>
 <p>一般使用第一个形式，返回值是否需要视情况而定，一般不需要，代码可以直接写：</p>
 <pre><code>WaitSecs(1); %等待1秒。
-</code></pre><h1 id="输出文本"><a href="#输出文本" class="headerlink" title="输出文本"></a>输出文本</h1><pre><code>[newX, newY]=Screen(&apos;DrawText&apos;, windowPtr, text [,x] [,y] [,color] [,backgroundColor] [,yPositionIsBaseline] [,swapTextDirection]);
+</code></pre><h3 id="输出文本"><a href="#输出文本" class="headerlink" title="输出文本"></a>输出文本</h3><pre><code>[newX, newY]=Screen(&apos;DrawText&apos;, windowPtr, text [,x] [,y] [,color] [,backgroundColor] [,yPositionIsBaseline] [,swapTextDirection]);
 </code></pre><p><strong>①newX, newY</strong>，两个返回值，是一个坐标，返回得到文本绘制后，画笔所在的坐标位置。基本不需要</p>
 <p><strong>②windowPtr</strong>，屏幕句柄，不多说。</p>
 <p><strong>③text</strong>，文本内容，需要用英文输入法下的单引号包括。如果内容是中文，需要使用double（）函数转换。</p>
@@ -137,143 +278,54 @@ WaitSecs(2); %等待2秒
 Screen(&apos;CloseAll&apos;); %关闭所有屏幕
 </code></pre><p>复制这5行代码到matlab的m文件，运行一下试试。</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/" data-id="cjxvls4lt0003sou8cr5c69uj"
-         class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" class="article-nav-link">
-        <strong class="article-nav-caption">前一篇</strong>
-        <div class="article-nav-title">
-          
-            PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待
-          
         </div>
-      </a>
-    
-    
-      <a href="/2018/04/10/所谓梦想/" class="article-nav-link">
-        <strong class="article-nav-caption">后一篇</strong>
-        <div class="article-nav-title">所谓梦想</div>
-      </a>
-    
-  </nav>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/psychtoolbox/"># psychtoolbox</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/">PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待</a>
+            
+            
+            <a class="next" rel="next" href="/2018/04/10/所谓梦想/">所谓梦想</a>
+            
+        </section>
 
 
-  
+    </article>
+</div>
 
-  
-    
-  
-
-</article>
-
-
-
-</section>
-  <footer class="footer">
-  
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-</ul>
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-    <ul class="list-inline">
-      <li>&copy; 2019 诸法空相</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
-  </div>
 </footer>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="诸法空相"></a>
     </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">主页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="搜索">
-        <i class="fe fe-search"></i>
-        搜索
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-      <li class="nav-item">
-          <div class="totop" id="totop">
-    <i class="fe fe-rocket"></i>
-</div>
-      </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/search.js"></script>
-
-
-<script src="/js/ocean.js"></script>
-
 </body>
 </html>

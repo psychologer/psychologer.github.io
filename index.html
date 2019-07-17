@@ -1,541 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>诸法空相</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
     
-    诸法空相</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
 </head>
-</html>
 <body>
-<main class="content">
-  <section class="jumbotron">
-  <div class="video">
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">主页</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
     
-      <div class="video-frame">
-        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
-      </div>
-    
-    <div class="video-media">
-      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
-             poster="/images/ocean/ocean.png" x5-video-player-type="h5">
-        <source src="/images/ocean/ocean.mp4" type="video/mp4">
-        <source src="/images/ocean/ocean.ogv" type="video/ogg">
-        <source src="/images/ocean/ocean.webm" type="video/webm">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-      </video>
-      <div class="video-overlay"></div>
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">主页</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            
+    <div class="container">
+    <div class="intro">
+        <div class="avatar">
+            <a href="/"><img src="/image/avatar.jpeg"></a>
+        </div>
+        <div class="nickname">诸法空相</div>
+        <div class="description"><p>四肢不勤 | 五谷不分 | 一事无成 | 在家养老</p>
+</div>
+        <div class="links">
+            
+                
+                    <a class="link-item" title="Blog" href="/">
+                        
+                        
+                            <i class="iconfont icon-blog"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="ZhiHu" href>
+                        
+                        
+                            <i class="iconfont icon-zhihu"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Weibo" href="https://weibo.com/u/2832122387">
+                        
+                        
+                            <i class="iconfont icon-weibo"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="WeChat" href>
+                        
+                        
+                            <i class="iconfont icon-wechat"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Github" href>
+                        
+                        
+                            <i class="iconfont icon-github"></i>
+                        
+                    </a>
+                
+            
+        </div>
     </div>
-    <div class="video-inner text-center text-white">
-      <h1><a href="/">诸法空相</a></h1>
-      <p>四肢不勤 | 五谷不分 | 一事无成</p>
-      <div><img src="/images/hexo-inverted.svg" class="brand" alt="诸法空相"></div>
-    </div>
-    <div class="video-learn-more">
-      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
-    </div>
-  </div>
-</section>
-
-<div id="landingpage">
-  <section class="outer">
-  <article class="articles">
-    
-    <h1 class="page-type-title"></h1>
-
-    
-      
-        <article id="post-PTB从入门到放弃05 --- 刺激呈现" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/07/09/PTB从入门到放弃05 --- 刺激呈现/">PTB从入门到放弃05 --- 刺激呈现</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/07/09/PTB从入门到放弃05 --- 刺激呈现/" class="article-date">
-  <time datetime="2019-07-09T08:53:14.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p>我们先笼统地把刺激分为图像，声音和视频三大类。然后分别介绍这三大类刺激的呈现方式。<br>
-        
-          <a class="article-more-link" href="/2019/07/09/PTB从入门到放弃05 --- 刺激呈现/">阅读全文</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/09/PTB从入门到放弃05 --- 刺激呈现/" data-id="cjxvls4lq0001sou80jibg8re"
-         class="article-share-link">分享</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-所谓死亡" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/07/03/所谓死亡/">所谓死亡</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/07/03/所谓死亡/" class="article-date">
-  <time datetime="2019-07-03T05:00:43.000Z" itemprop="datePublished">2019-07-03</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p>死亡恐惧就是全人类的梦魇，它有如一把达摩克利斯之剑，永远悬挂在人的头顶，不知道何时会落下。<br>
-        
-          <a class="article-more-link" href="/2019/07/03/所谓死亡/">阅读全文</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/03/所谓死亡/" data-id="cjxvls4lv0004sou8bjdvcuaw"
-         class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/胡思乱想/">胡思乱想</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-PTB从入门到放弃04 --- 数据存储" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/07/02/PTB从入门到放弃04 --- 数据存储/">PTB从入门到放弃04 --- 数据存储</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/07/02/PTB从入门到放弃04 --- 数据存储/" class="article-date">
-  <time datetime="2019-07-02T04:13:01.000Z" itemprop="datePublished">2019-07-02</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p>关于诸如反应时之类的数据存储，估计绝大多数计算机专业的人都会使用结构数组来保存数据，这种方法我自己以前尝试过，不过我觉得有点复杂，也可能是我没有深厚的计算机语言基础，使用起来略觉别扭。后面我自己摸索出来矩阵作为matlab最大的特点，用矩阵来保存数据简直简单粗暴。<br>
-        
-          <a class="article-more-link" href="/2019/07/02/PTB从入门到放弃04 --- 数据存储/">阅读全文</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/02/PTB从入门到放弃04 --- 数据存储/" data-id="cjxvls4lx0005sou8fjkea94i"
-         class="article-share-link">分享</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-PTB从入门到放弃03 --- 按键反应收集" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/">PTB从入门到放弃03 --- 按键反应收集</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/" class="article-date">
-  <time datetime="2019-07-01T03:00:00.000Z" itemprop="datePublished">2019-07-01</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p>在02里面只提到了按键等待，但是认知行为实验是需要收集被试的按键反应的正确与错误的信息以及反应正确时被试的反应时的。我们需要先收集被试的按键，然后再让程序自己拿这个被试的按键去与已经写好的正确与否判断语句进行匹配，然后反应正确，记录下这个反应时，存到数据变量里。<br>
-        
-          <a class="article-more-link" href="/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/">阅读全文</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/" data-id="cjxvls4m00008sou8v92efdei"
-         class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/">PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" class="article-date">
-  <time datetime="2019-06-29T03:00:00.000Z" itemprop="datePublished">2019-06-29</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p>本文介绍指导语呈现的途径以及简单的键盘和鼠标等待<br>
-        
-          <a class="article-more-link" href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/">阅读全文</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" data-id="cjxvls4ll0000sou8gj4ltq8q"
-         class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-PTB从入门到放弃01 --- psychtoolbox5个基础函数" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/">PTB从入门到放弃01 --- psychtoolbox5个基础函数</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/" class="article-date">
-  <time datetime="2019-06-28T07:00:00.000Z" itemprop="datePublished">2019-06-28</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p>matlab刺激的呈现主要是依托于PTB的窗口类函数来实现的。类似于ppt，你在空白的ppt页面上绘制纹理，摆放图形，描述文字，PTB为你提供无限多的空白窗口，你可以在这些窗口上做你想做的任何事。<br>
-        
-          <a class="article-more-link" href="/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/">阅读全文</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/" data-id="cjxvls4lt0003sou8cr5c69uj"
-         class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-所谓梦想" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/04/10/所谓梦想/">所谓梦想</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/04/10/所谓梦想/" class="article-date">
-  <time datetime="2018-04-10T13:01:43.000Z" itemprop="datePublished">2018-04-10</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p>迷茫的时候，总会想要去干一些异想天开的事。比如最近多看了几本应当被划分进文学著作类型的书，就想着作家真的是好生厉害，要不我去跨考个中文系，悄咪咪地混进文学的大门算了。<br>
-        
-          <a class="article-more-link" href="/2018/04/10/所谓梦想/">阅读全文</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/10/所谓梦想/" data-id="cjxvls4mi000esou8rmqsohi0"
-         class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/胡思乱想/">胡思乱想</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-  </article>
-  
-  
-</section>
 </div>
 
-  <footer class="footer">
-  
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-</ul>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-    <ul class="list-inline">
-      <li>&copy; 2019 诸法空相</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
-  </div>
 </footer>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="诸法空相"></a>
     </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">主页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="搜索">
-        <i class="fe fe-search"></i>
-        搜索
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-      <li class="nav-item">
-          <div class="totop" id="totop">
-    <i class="fe fe-rocket"></i>
-</div>
-      </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/search.js"></script>
-
-
-<script src="/js/ocean.js"></script>
-
 </body>
 </html>

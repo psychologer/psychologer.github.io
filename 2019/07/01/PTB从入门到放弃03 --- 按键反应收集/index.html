@@ -1,61 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    PTB从入门到放弃03 --- 按键反应收集 |
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>PTB从入门到放弃03 --- 按键反应收集 | 诸法空相</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
     
-    诸法空相</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
 </head>
-</html>
 <body>
-<main class="content">
-  <section class="outer">
-  <article id="post-PTB从入门到放弃03 --- 按键反应收集" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">主页</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
 
-  <div class="article-inner">
+        </div>
+    </nav>
+
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      PTB从入门到放弃03 --- 按键反应收集
-    </h1>
-  
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">主页</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
 
-      </header>
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
     
 
     
-      <div class="article-meta">
-        <a href="/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/" class="article-date">
-  <time datetime="2019-07-01T03:00:00.000Z" itemprop="datePublished">2019-07-01</time>
-</a>
-        
-      </div>
-    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">PTB从入门到放弃03 --- 按键反应收集</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Lee</a>
+                    
 
-    <div class="article-entry" itemprop="articleBody">
-      
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2019-07-01&nbsp;&nbsp;11:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/psychtoolbox/">psychtoolbox</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
 
-      
-
-      
-        <p>在02里面只提到了按键等待，但是认知行为实验是需要收集被试的按键反应的正确与错误的信息以及反应正确时被试的反应时的。我们需要先收集被试的按键，然后再让程序自己拿这个被试的按键去与已经写好的正确与否判断语句进行匹配，然后反应正确，记录下这个反应时，存到数据变量里。<br><a id="more"></a></p>
+        <div class="post-content">
+            <p>在02里面只提到了按键等待，但是认知行为实验是需要收集被试的按键反应的正确与错误的信息以及反应正确时被试的反应时的。我们需要先收集被试的按键，然后再让程序自己拿这个被试的按键去与已经写好的正确与否判断语句进行匹配，然后反应正确，记录下这个反应时，存到数据变量里。<br><a id="more"></a></p>
 <p>在进行按键反应收集之前，我们需要做的，就是设置好相应的键码。</p>
-<h4 id="1-设置键码"><a href="#1-设置键码" class="headerlink" title="1 设置键码"></a>1 设置键码</h4><pre><code>KbNameResult = KbName(arg);
+<h3 id="1-设置键码"><a href="#1-设置键码" class="headerlink" title="1 设置键码"></a>1 设置键码</h3><pre><code>KbNameResult = KbName(arg);
 </code></pre><p>该函数是用来设置键盘码的。返回值<strong>KbNameResult</strong>返回键的扫描码。扫描码采取的貌似是ASCII码。比如<code>KbName(&#39;space&#39;)</code>空格键对应的是32，也就是返回值是32。</p>
 <p>参数<strong>arg</strong>是指定键名，比如回车是return，空格是space，a就是a这样的。</p>
 <p>因为电脑系统和设备有可能不同，比如windows和mac os，键盘码就有可能不同，所以在每个程序最开始，建议都统一键盘码。</p>
@@ -64,14 +205,14 @@
 <pre><code>kba = KbName(&apos;a&apos;);
 kbl = KbName(&apos;l&apos;);
 </code></pre><p>变量kba和kbl就是得到的a和l键返回的扫描码。</p>
-<h4 id="2-限制按键"><a href="#2-限制按键" class="headerlink" title="2 限制按键"></a>2 限制按键</h4><p>键盘上的按键很多，有时候怕被试不小心按错，而我们的程序刚好也没有对那些按键采取相应的措施，造成数据异常是一回事。如果不小心按到一些关键按键，导致实验程序崩溃那就更惨了。</p>
+<h3 id="2-限制按键"><a href="#2-限制按键" class="headerlink" title="2 限制按键"></a>2 限制按键</h3><p>键盘上的按键很多，有时候怕被试不小心按错，而我们的程序刚好也没有对那些按键采取相应的措施，造成数据异常是一回事。如果不小心按到一些关键按键，导致实验程序崩溃那就更惨了。</p>
 <p>为了避免这种错误的发生，我们可以对按键范围进行限制。</p>
 <p><code>RestrictKeysForKbCheck()</code>函数就是用来对按键范围进行限制的。</p>
 <p>比如我们只要被试对a和l键进行反应，其他按键完全不需要：</p>
 <pre><code>RestrictKeysForKbCheck([KbName(&apos;a&apos;) KbName(&apos;l&apos;)]);
 </code></pre><p>那么在这之后，除了a和l键之外，程序不会对其他键产生任何反应。</p>
 <p>如果有其他特殊按键，比如设置按Esc键退出程序，也可以加上该按键，这个限制范围完全由你决定。</p>
-<h4 id="3-按键判断"><a href="#3-按键判断" class="headerlink" title="3 按键判断"></a>3 按键判断</h4><pre><code>[keyIsDown, secs, keyCode, deltaSecs] = KbCheck([deviceNumber]);
+<h3 id="3-按键判断"><a href="#3-按键判断" class="headerlink" title="3 按键判断"></a>3 按键判断</h3><pre><code>[keyIsDown, secs, keyCode, deltaSecs] = KbCheck([deviceNumber]);
 </code></pre><p>4个返回值。</p>
 <p><strong>keyIsDown</strong>，如果有任意的按键行为产生，返回1。</p>
 <p><strong>secs</strong>，跟<code>KbWait()</code>的一样，返回按键产生的时间。</p>
@@ -102,7 +243,7 @@ kbl = KbName(&apos;l&apos;);
     end
 end
 </code></pre><p>这就是一个简单的按键判断过程原理。先判断按键是什么，再判断这个按键行为是否与刺激匹配，如果匹配，就是正确反应时，那么记录下这个反应时，以及其他你所需要的信息，保存好。然后跳出这个循环，进行下一试次。</p>
-<h4 id="4-反应时获取"><a href="#4-反应时获取" class="headerlink" title="4 反应时获取"></a>4 反应时获取</h4><pre><code>GetSecs
+<h3 id="4-反应时获取"><a href="#4-反应时获取" class="headerlink" title="4 反应时获取"></a>4 反应时获取</h3><pre><code>GetSecs
 </code></pre><p>这个函数是用来获取当前时间值的。它获取的时间精度据说特别高。一般是毫秒级别，如果电脑系统配置了更高精度的时钟，它能达到微秒级。</p>
 <p>在刺激呈现时，使用</p>
 <pre><code>t_start = GetSecs;
@@ -110,143 +251,54 @@ end
 <pre><code>restime = secs-t_start;
 </code></pre><p>该句可以加进去上面KbCheck判断里按键与刺激匹配的语句块里，把时间赋值给变量restime。当然我们一般不这么存储数据，在后面我会讲到存储数据的方式。这里只先简单介绍怎么得到反应时。</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/" data-id="cjxvls4m00008sou8v92efdei"
-         class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/07/02/PTB从入门到放弃04 --- 数据存储/" class="article-nav-link">
-        <strong class="article-nav-caption">前一篇</strong>
-        <div class="article-nav-title">
-          
-            PTB从入门到放弃04 --- 数据存储
-          
         </div>
-      </a>
-    
-    
-      <a href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" class="article-nav-link">
-        <strong class="article-nav-caption">后一篇</strong>
-        <div class="article-nav-title">PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待</div>
-      </a>
-    
-  </nav>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/psychtoolbox/"># psychtoolbox</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/07/02/PTB从入门到放弃04 --- 数据存储/">PTB从入门到放弃04 --- 数据存储</a>
+            
+            
+            <a class="next" rel="next" href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/">PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待</a>
+            
+        </section>
 
 
-  
+    </article>
+</div>
 
-  
-    
-  
-
-</article>
-
-
-
-</section>
-  <footer class="footer">
-  
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-</ul>
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-    <ul class="list-inline">
-      <li>&copy; 2019 诸法空相</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
-  </div>
 </footer>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="诸法空相"></a>
     </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">主页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="搜索">
-        <i class="fe fe-search"></i>
-        搜索
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-      <li class="nav-item">
-          <div class="totop" id="totop">
-    <i class="fe fe-rocket"></i>
-</div>
-      </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/search.js"></script>
-
-
-<script src="/js/ocean.js"></script>
-
 </body>
 </html>

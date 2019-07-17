@@ -1,52 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    关于 |
-    
-    诸法空相</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
-</head>
-</html>
-<body>
-<main class="content">
-  <section class="outer">
-  <article id="page-" class="article article-type-page" itemscope itemprop="blogPost" data-scroll-reveal>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <div class="article-inner">
+
+
+<title>关于 | 诸法空相</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
     
-      <header class="article-header">
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
         
-  
-    <h1 class="article-title" itemprop="name">
-      关于
-    </h1>
-  
-
-      </header>
     
 
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">主页</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
     
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">主页</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
 
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p> 不知名师范大学，本科心理学狗，学艺不精，啥都不懂。</p>
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title">关于</h2>
+        
+        <section class="post-content">
+            <p> 不知名师范大学，本科心理学狗，学艺不精，啥都不懂。</p>
 <p> <del>梦想</del> <strong>妄想</strong>成为一名作家，但也没有为此努力过。</p>
 <p> 喜欢很多东西，但也就是喜欢而已。</p>
 <p> 目前在家养老，一事无成。准备考研中。</p>
@@ -54,120 +114,17 @@
 <p>😛 <a href="https://weibo.com/u/2832122387" target="_blank" rel="noopener">新浪微博</a> 有任何意见和想法可以通过微博找到我。</p>
 <p>😛 或者是邮箱：<u><a href="mailto:765293433@qq.com" target="_blank" rel="noopener">765293433@qq.com</a> </u>与我联系。</p>
 
-      
+        </section>
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/about/index.html" data-id="cjxvls4mi000dsou8i05123c9"
-         class="article-share-link">分享</a>
-      
-    </footer>
-
-  </div>
-
-  
-    
-
-  
-
-  
-
-</article>
-
-
-
-</section>
-  <footer class="footer">
-  
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-</ul>
-    </div>
-    <ul class="list-inline">
-      <li>&copy; 2019 诸法空相</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
-  </div>
 </footer>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="诸法空相"></a>
     </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">主页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="搜索">
-        <i class="fe fe-search"></i>
-        搜索
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-      <li class="nav-item">
-          <div class="totop" id="totop">
-    <i class="fe fe-rocket"></i>
-</div>
-      </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/search.js"></script>
-
-
-<script src="/js/ocean.js"></script>
-
 </body>
 </html>

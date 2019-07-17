@@ -1,59 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待 |
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待 | 诸法空相</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
     
-    诸法空相</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
 </head>
-</html>
 <body>
-<main class="content">
-  <section class="outer">
-  <article id="post-PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">主页</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
 
-  <div class="article-inner">
+        </div>
+    </nav>
+
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待
-    </h1>
-  
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">主页</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
 
-      </header>
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
     
 
     
-      <div class="article-meta">
-        <a href="/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" class="article-date">
-  <time datetime="2019-06-29T03:00:00.000Z" itemprop="datePublished">2019-06-29</time>
-</a>
-        
-      </div>
-    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Lee</a>
+                    
 
-    <div class="article-entry" itemprop="articleBody">
-      
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2019-06-29&nbsp;&nbsp;11:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/psychtoolbox/">psychtoolbox</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
 
-      
-
-      
-        <p>本文介绍指导语呈现的途径以及简单的键盘和鼠标等待<br><a id="more"></a></p>
+        <div class="post-content">
+            <p>本文介绍指导语呈现的途径以及简单的键盘和鼠标等待<br><a id="more"></a></p>
 <h3 id="1-指导语呈现"><a href="#1-指导语呈现" class="headerlink" title="1 指导语呈现"></a>1 指导语呈现</h3><p>实现指导语的呈现一般有2种方式：一种是<strong>文字型</strong>，一种是<strong>图片型</strong>。</p>
 <p>第一种文字型，缺点很多，主要是比较复杂，需要写比较多的代码，耗时耗力；而且matlab的中文支持貌似也很差，需要经过各种字符转换和编码转换。优点也有，就是能够匹配任一台电脑。当然这个优点其实可有可无。所以我一般不会用这种方式呈现指导语。</p>
 <p>第二种图片型，会比较简单。思路就是先把指导语打印在一张图片上，然后在PTB里面使用DrawTexture或者PutImage的方式呈现出来。需要的代码跟文字型比起来，简直少得不能再少。所以关于指导语呈现就学这样的方式就够了，省时省力。</p>
@@ -148,143 +289,54 @@ b =
     end
 end
 </code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/29/PTB从入门到放弃02 --- 指导语呈现和键盘鼠标按键等待/" data-id="cjxvls4ll0000sou8gj4ltq8q"
-         class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/psychtoolbox/">psychtoolbox</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/" class="article-nav-link">
-        <strong class="article-nav-caption">前一篇</strong>
-        <div class="article-nav-title">
-          
-            PTB从入门到放弃03 --- 按键反应收集
-          
         </div>
-      </a>
-    
-    
-      <a href="/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/" class="article-nav-link">
-        <strong class="article-nav-caption">后一篇</strong>
-        <div class="article-nav-title">PTB从入门到放弃01 --- psychtoolbox5个基础函数</div>
-      </a>
-    
-  </nav>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/psychtoolbox/"># psychtoolbox</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/07/01/PTB从入门到放弃03 --- 按键反应收集/">PTB从入门到放弃03 --- 按键反应收集</a>
+            
+            
+            <a class="next" rel="next" href="/2019/06/28/PTB从入门到放弃01 --- psychtoolbox5个基础函数/">PTB从入门到放弃01 --- psychtoolbox5个基础函数</a>
+            
+        </section>
 
 
-  
+    </article>
+</div>
 
-  
-    
-  
-
-</article>
-
-
-
-</section>
-  <footer class="footer">
-  
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-</ul>
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Lee | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-    <ul class="list-inline">
-      <li>&copy; 2019 诸法空相</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
-  </div>
 </footer>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="诸法空相"></a>
     </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">主页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="搜索">
-        <i class="fe fe-search"></i>
-        搜索
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-      <li class="nav-item">
-          <div class="totop" id="totop">
-    <i class="fe fe-rocket"></i>
-</div>
-      </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/search.js"></script>
-
-
-<script src="/js/ocean.js"></script>
-
 </body>
 </html>
