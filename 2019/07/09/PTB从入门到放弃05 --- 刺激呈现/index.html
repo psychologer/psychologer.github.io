@@ -194,47 +194,60 @@
         </header>
 
         <div class="post-content">
-            <p>我们先笼统地把刺激分为图像，声音和视频三大类。然后分别介绍这三大类刺激的呈现方式。<br><a id="more"></a></p>
-<h3 id="1-图像"><a href="#1-图像" class="headerlink" title="1 图像"></a>1 图像</h3><p>首先是图像。这应该是大多数的认知实验刺激类别。</p>
+            <p>我们先笼统地把刺激分为图像，声音和视频三大类。然后分别介绍这三大类刺激的呈现方式。
+&lt;!-- more --&gt;</p>
+<h3>1 图像</h3>
+<p>首先是图像。这应该是大多数的认知实验刺激类别。</p>
 <p>在前文指导语呈现里，已经有提到两种方式，即PutImage和DrawTexture。这两个是呈现图片刺激的主要方法。如果对图片没有多大要求，只是简单呈现图片，一般可以选前者；如果还需要对图片进行一些处理之类的，那么后者会更适合。</p>
 <p>如果实验的刺激材料是一些朴素刺激，比如点，线，圆，矩形之类的，PTB当然也包括了简单粗暴的绘制方式。</p>
-<p>比如<br>    Screen(‘DrawDots’,windowPtr,xy,[size],[color],[center],[dot_type]);</p>
+<p>比如
+	Screen('DrawDots',windowPtr,xy,[size],[color],[center],[dot_type]);</p>
 <p>这是画点的函数。参数xy是2*2的矩阵，第一行是x坐标，第二行是y坐标。</p>
 <p>比如</p>
-<pre><code>Screen(&apos;DrawLine&apos;,windowPtr,[color],fromH,fromV,toH,toV[penwidth]);
-</code></pre><p>这是画线的函数，fromH,fromV,toH,toV表示的是2个坐标，从坐标x1y1为起点，到x2y2为终点，画一条线。</p>
+<pre><code>Screen('DrawLine',windowPtr,[color],fromH,fromV,toH,toV[penwidth]);
+</code></pre>
+<p>这是画线的函数，fromH,fromV,toH,toV表示的是2个坐标，从坐标x1y1为起点，到x2y2为终点，画一条线。</p>
 <p>比如</p>
-<pre><code>Screen(&apos;FillRect&apos;,windowPtr,[color],[rect]);
-</code></pre><p>这是画填充矩形的函数，rect是范围，也是2个坐标，从x1y1为起点，以x2y2为对角点，画一个有填充颜色的矩形。</p>
+<pre><code>Screen('FillRect',windowPtr,[color],[rect]);
+</code></pre>
+<p>这是画填充矩形的函数，rect是范围，也是2个坐标，从x1y1为起点，以x2y2为对角点，画一个有填充颜色的矩形。</p>
 <p>再比如</p>
-<pre><code>Screen(&apos;FillOval&apos;,windowPtr,[color],[rect]);
-</code></pre><p>这是画填充椭圆的函数，参数跟矩形是一样的，rect也是一样，如果这个rect的范围是一个正方形，那么在里面画出来的内切圆就是正圆，如果rect的范围是矩形，那么内切圆就是个椭圆。</p>
+<pre><code>Screen('FillOval',windowPtr,[color],[rect]);
+</code></pre>
+<p>这是画填充椭圆的函数，参数跟矩形是一样的，rect也是一样，如果这个rect的范围是一个正方形，那么在里面画出来的内切圆就是正圆，如果rect的范围是矩形，那么内切圆就是个椭圆。</p>
 <p>以及还有一些其他的画虚线，画弧线，画矩形框架，画多边形之类的，PTB都是有提供相应的函数的，基本能够满足长间刺激的需要。</p>
-<h3 id="2-声音"><a href="#2-声音" class="headerlink" title="2 声音"></a>2 声音</h3><p>生成纯音的函数是：</p>
+<h3>2 声音</h3>
+<p>生成纯音的函数是：</p>
 <pre><code>[beep,samplingRatel] = MakeBeep(freq,duration,[samplingRatel]);
-</code></pre><p>输入参数freq是频率，也就是音调，以Hz为单位。比如500Hz。</p>
+</code></pre>
+<p>输入参数freq是频率，也就是音调，以Hz为单位。比如500Hz。</p>
 <p>duration是以声音的长度，以秒为单位。比如10s。</p>
 <p>samplingRatel是采样频率，默认值22255。</p>
 <p>返回值beep，返回该音频的相关数据，samplingRatel返回采样频率。</p>
 <p>比如生成一个1000Hz，1s的纯音：</p>
 <pre><code>beep = MakeBeep(1000,1);
-</code></pre><p>或者使用Beeper函数</p>
+</code></pre>
+<p>或者使用Beeper函数</p>
 <pre><code>Beeper(frequency,fVolume,durationSec);
-</code></pre><p>frequency还是音调，fVolume是音量，取值在1-4之间，durationSec和duration是一样的。</p>
+</code></pre>
+<p>frequency还是音调，fVolume是音量，取值在1-4之间，durationSec和duration是一样的。</p>
 <p>不过上述只是生成音频数据，若要播放，要需要依靠Snd函数来打开音频通道。</p>
 <pre><code>err = Snd(command,[signal],[rate],[sampleSize]);
-</code></pre><p>参数command的是字符命令，包括：</p>
-<pre><code>&apos;Open&apos;,打开音频通道
-&apos;play&apos;,播放音频数据
-&apos;Close&apos;,停止所有音频播放并关闭音频通道
-&apos;Wait&apos;,等待直到所有音频播放完毕
+</code></pre>
+<p>参数command的是字符命令，包括：</p>
+<pre><code>'Open',打开音频通道
+'play',播放音频数据
+'Close',停止所有音频播放并关闭音频通道
+'Wait',等待直到所有音频播放完毕
 等等
-</code></pre><p>signal是音频数据，值越小，声音越柔和，取值范围-1-1。</p>
+</code></pre>
+<p>signal是音频数据，值越小，声音越柔和，取值范围-1-1。</p>
 <p>rate是频率，单位是Hz。</p>
 <p>sampleSize是采样大小，取值一般8或者16。</p>
 <p>返回值err是是否操作成功。是则返回0。</p>
 <p>也可以使用auread函数和读取自己准备的音频文件进行播放。</p>
-<h3 id="3-视频"><a href="#3-视频" class="headerlink" title="3 视频"></a>3 视频</h3><p>目前我自己还没使用过视频作为刺激。只知道一些函数，就不写出来了。一般也很少有实验用到视频呈现。如果需要也不用编程，直接播放给被试看，对吧。</p>
+<h3>3 视频</h3>
+<p>目前我自己还没使用过视频作为刺激。只知道一些函数，就不写出来了。一般也很少有实验用到视频呈现。如果需要也不用编程，直接播放给被试看，对吧。</p>
 
         </div>
 

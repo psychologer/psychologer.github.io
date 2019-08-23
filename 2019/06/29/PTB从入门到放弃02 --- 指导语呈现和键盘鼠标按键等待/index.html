@@ -194,38 +194,46 @@
         </header>
 
         <div class="post-content">
-            <p>本文介绍指导语呈现的途径以及简单的键盘和鼠标等待<br><a id="more"></a></p>
-<h3 id="1-指导语呈现"><a href="#1-指导语呈现" class="headerlink" title="1 指导语呈现"></a>1 指导语呈现</h3><p>实现指导语的呈现一般有2种方式：一种是<strong>文字型</strong>，一种是<strong>图片型</strong>。</p>
+            <p>本文介绍指导语呈现的途径以及简单的键盘和鼠标等待
+&lt;!-- more --&gt;</p>
+<h3>1 指导语呈现</h3>
+<p>实现指导语的呈现一般有2种方式：一种是<strong>文字型</strong>，一种是<strong>图片型</strong>。</p>
 <p>第一种文字型，缺点很多，主要是比较复杂，需要写比较多的代码，耗时耗力；而且matlab的中文支持貌似也很差，需要经过各种字符转换和编码转换。优点也有，就是能够匹配任一台电脑。当然这个优点其实可有可无。所以我一般不会用这种方式呈现指导语。</p>
 <p>第二种图片型，会比较简单。思路就是先把指导语打印在一张图片上，然后在PTB里面使用DrawTexture或者PutImage的方式呈现出来。需要的代码跟文字型比起来，简直少得不能再少。所以关于指导语呈现就学这样的方式就够了，省时省力。</p>
 <p>如果你会Photoshop这种类似的图片编辑技能的话，那把文字打印在一张空白图片上对你来说应该轻而易举。如果不会PS，那PPT总会吧？新建空白ppt把指导语打上去，然后另存为图片就可以了，关于图片尺寸也是可以自己在ppt上调整的。如果你跟我说不会把ppt另存为图片，截图总会吧？直接截取ppt上的指导语然后保存成图片。</p>
-<p>有了指导语图片后，我们先使用<strong><code>imread（）</code>函数</strong>读取这张图片为二进制矩阵。</p>
+<p>有了指导语图片后，我们先使用**<code>imread（）</code>函数**读取这张图片为二进制矩阵。</p>
 <pre><code>Image = imread（filename）；
-</code></pre><p>filename就是图片文件名。如果你喜欢简单粗暴点的，下一步就可以直接把图片打印到屏幕上了。</p>
-<pre><code>Screen(&apos;PutImage&apos;,WindowPtr,Image);
-</code></pre><p>‘PutImage’函数功能就是放置一张图片。</p>
+</code></pre>
+<p>filename就是图片文件名。如果你喜欢简单粗暴点的，下一步就可以直接把图片打印到屏幕上了。</p>
+<pre><code>Screen('PutImage',WindowPtr,Image);
+</code></pre>
+<p>'PutImage'函数功能就是放置一张图片。</p>
 <p>两行代码轻轻松松呈现指导语。但是这也有缺点。首先你的图片尺寸是固定的，比如我的电脑屏幕是宽2736x高1824，我在Photoshop上直接把图片尺寸也设置成这个大小，那么就契合屏幕尺寸了。但是如果我的程序拿到另外一台电脑运行，它的屏幕分辨率没有我的电脑这么大，或者比我的还大，那么指导语就会更小或者更大了，不合适。不过如果只是大一点小一点，其实也没有多大影响。</p>
 <p>另一个函数，是可以解决这个问题的，那就是对图片进行缩放，或者其他调整。</p>
-<pre><code>InstrImg = Screen(&apos;MakeTexture&apos;,WindowPtr,Image);
-Screen(&apos;DrawTexture&apos;,Wptr,InstrImg);
-</code></pre><p>比上面也就多了一行。</p>
-<p>使用’MakeTexture’先创建纹理缓冲，也就是图片的缓冲，然后再用’DrawTexture’把这个图片缓冲打印出来。呈现效果和’PutImage’其实是一样的，但是’DrawTexture’还多了很多参数可以对图片进行调整。</p>
-<pre><code>Screen(&apos;DrawTexture&apos;, windowPointer, texturePointer [,sourceRect] [,destinationRect] [,rotationAngle] [, filterMode] [, globalAlpha] [, modulateColor] [, textureShader] [, specialFlags] [, auxParameters]);
-</code></pre><p><strong>texturePointer</strong>，就是’MakeTexture’创建纹理缓冲的指针。</p>
+<pre><code>InstrImg = Screen('MakeTexture',WindowPtr,Image);
+Screen('DrawTexture',Wptr,InstrImg);
+</code></pre>
+<p>比上面也就多了一行。</p>
+<p>使用'MakeTexture'先创建纹理缓冲，也就是图片的缓冲，然后再用'DrawTexture'把这个图片缓冲打印出来。呈现效果和'PutImage'其实是一样的，但是'DrawTexture'还多了很多参数可以对图片进行调整。</p>
+<pre><code>Screen('DrawTexture', windowPointer, texturePointer [,sourceRect] [,destinationRect] [,rotationAngle] [, filterMode] [, globalAlpha] [, modulateColor] [, textureShader] [, specialFlags] [, auxParameters]);
+</code></pre>
+<p><strong>texturePointer</strong>，就是'MakeTexture'创建纹理缓冲的指针。</p>
 <p><strong>sourceRect</strong>，指定纹理中的某个区域，默认是整张图片，保持默认即可。</p>
 <p><strong>destinationRect</strong>，指定屏幕中的某个区域来绘制纹理，默认在屏幕中心。</p>
 <p><strong>rotationAngle</strong>，指定纹理旋转角度，默认0度，即不旋转。</p>
 <p>后面的参数基本用不到（反正我没用过，所以也不太会使用那些参数）。</p>
-<p>总而言之’MakeTexture’和’DrawTexture’比’PutImage’的发挥空间要大的多，简单来说就是你可以对图片进行更多的调整。不过其实对于指导语来说，一般’PutImage’就够用了，不用去搞一些花里胡哨的东西。’MakeTexture’和’DrawTexture’一般是用来绘制一些特殊纹理的，比如随机噪音。</p>
+<p>总而言之'MakeTexture'和'DrawTexture'比'PutImage'的发挥空间要大的多，简单来说就是你可以对图片进行更多的调整。不过其实对于指导语来说，一般'PutImage'就够用了，不用去搞一些花里胡哨的东西。'MakeTexture'和'DrawTexture'一般是用来绘制一些特殊纹理的，比如随机噪音。</p>
 <pre><code>imgarray = 255*rand(200,200); %生成200*200的随机数字
-imgnoise = Screen(&apos;MakeTexture&apos;,Wptr,imgarray);
-Screen(&apos;DrawTexture&apos;,Wptr,imgnoise);
-</code></pre><p>输出的结果就是：</p>
+imgnoise = Screen('MakeTexture',Wptr,imgarray);
+Screen('DrawTexture',Wptr,imgnoise);
+</code></pre>
+<p>输出的结果就是：</p>
 <p><img src="https://hbimg.huabanimg.com/cc76cf2a447ae677e4d9db9dc47d3657dec6daf5116d0-u26QKd_fw658" alt="noise"></p>
 <p>有时候我们也经常需要用到光栅。</p>
 <p>那么首先了解一下<code>meshgrid(x,y)</code>函数，它是用来生成二维网格矩阵的。如：</p>
 <pre><code>[a,b] = meshgrid(1:4,1:5)；
-</code></pre><p>结果输出：</p>
+</code></pre>
+<p>结果输出：</p>
 <pre><code>a =
 
  1     2     3     4
@@ -242,20 +250,26 @@ b =
  3     3     3     3
  4     4     4     4
  5     5     5     5
-</code></pre><p>a矩阵每一行都是[1,2,3,4]，b矩阵每一列都是[1,2,3,4,5]，a和b都是5行4列。</p>
+</code></pre>
+<p>a矩阵每一行都是[1,2,3,4]，b矩阵每一列都是[1,2,3,4,5]，a和b都是5行4列。</p>
 <pre><code>[x,y] = meshgrid(1:100,1:100); %生成1：100的两个网格矩阵
-</code></pre><p>生成的x和y都是100行100列，而x的每一行都是1：100，y的每一列都是1：100.就像一张网格一样。</p>
+</code></pre>
+<p>生成的x和y都是100行100列，而x的每一行都是1：100，y的每一列都是1：100.就像一张网格一样。</p>
 <p>然后我们用正弦函数转换一下并输出图片。</p>
 <pre><code>imshow(sin(x))
-</code></pre><p><code>imshow（）</code>函数是显示图片。结果是：</p>
+</code></pre>
+<p><code>imshow（）</code>函数是显示图片。结果是：</p>
 <p><img src="https://hbimg.huabanimg.com/1a79b34fef47a8d8d27d0eb3860c3cbdefbe79213bcd-15t7FP_fw658" alt="grating1"></p>
 <p>或者：</p>
 <pre><code>imshow(sin(x+y))
-</code></pre><p>结果是：</p>
+</code></pre>
+<p>结果是：</p>
 <p><img src="https://hbimg.huabanimg.com/455004e118b8af9d1332a8147b79880b0203bdc875a9-lcsdWB_fw658" alt="grating2"></p>
 <p>正弦光栅不止于此，任意地去调配x和y的值，你可以玩出花来。</p>
-<h3 id="2-按键等待"><a href="#2-按键等待" class="headerlink" title="2 按键等待"></a>2 按键等待</h3><pre><code>[secs, keyCode, deltaSecs] = KbWait([deviceNumber][, forWhat=0]);
-</code></pre><p>该函数是用来等待被试的按键行为。在被试产生任意按键（或者可以指定按键）后，马上进入下一条代码运行，如果被试未产生按键，就一直停留在上一个代码语句中（类似于暂停或者休息）。</p>
+<h3>2 按键等待</h3>
+<pre><code>[secs, keyCode, deltaSecs] = KbWait([deviceNumber][, forWhat=0]);
+</code></pre>
+<p>该函数是用来等待被试的按键行为。在被试产生任意按键（或者可以指定按键）后，马上进入下一条代码运行，如果被试未产生按键，就一直停留在上一个代码语句中（类似于暂停或者休息）。</p>
 <p>三个返回值。</p>
 <p><strong>secs</strong>，返回按键行为发生的时间；</p>
 <p><strong>keyCode</strong>，返回按键的扫描码（即让你知道被试按哪个键），需要结合KbName函数使用；</p>
@@ -265,10 +279,13 @@ b =
 <p><strong>forWhat</strong>，指定获取的是“按下”的还是“释放”的动作，默认值0，表示“按下”动作，值1为“释放”动作，值2是“释放”后再接收被试按下的动作。一般保持默认即可，或者有特殊需求也只到1。</p>
 <p>所需要的参数和返回值视情况而定。一般不需要任何值，</p>
 <pre><code>KbWait；
-</code></pre><p>还有另外两个相似函数，KbPressWaitb,被试按压等待，相当于KbWait的forwhat参数=0的情况；KbReleaseWait，释放等待，相当于KbWait的forwhat参数=1的情况。一般只需要使用KbWait即可。</p>
-<h3 id="3-等待鼠标点击"><a href="#3-等待鼠标点击" class="headerlink" title="3 等待鼠标点击"></a>3 等待鼠标点击</h3><p>一般的认知行为实验我们都是使用的键盘按键反应，但不排除某些实验有特殊要求，需要用到鼠标反应。</p>
+</code></pre>
+<p>还有另外两个相似函数，KbPressWaitb,被试按压等待，相当于KbWait的forwhat参数=0的情况；KbReleaseWait，释放等待，相当于KbWait的forwhat参数=1的情况。一般只需要使用KbWait即可。</p>
+<h3>3 等待鼠标点击</h3>
+<p>一般的认知行为实验我们都是使用的键盘按键反应，但不排除某些实验有特殊要求，需要用到鼠标反应。</p>
 <pre><code>[clicks,x,y,whichButton] = GetClicks([windowPtrOrScreenNumber][, interclickSecs]);
-</code></pre><p>四个返回值，</p>
+</code></pre>
+<p>四个返回值，</p>
 <p><strong>clicks</strong>，返回值单击=1，双击=2；</p>
 <p><strong>x和y</strong>，返回鼠标操作时的坐标值；</p>
 <p><strong>whichButton</strong>，返回值表示左键=1，中键=2，右键=3。</p>
@@ -276,19 +293,20 @@ b =
 <p><strong>windowPtrOrScreenNumber</strong>，屏幕的指针或者编号，即Openwindow所得到的指针和编号。</p>
 <p><strong>interclickSecs</strong>，指定鼠标双击的时间间隔。如果鼠标两此单击的时间间隔小于该值时，视为双击，否则视为单击行为。如果该值设置为0，那么就是忽略双击，只使用单击；如果使用默认值，则使用系统默认的双击判定时间。</p>
 <pre><code>[Clicks] = GetClocks(windowPtr);
-</code></pre><p>一般只需要写这样就可以了。</p>
+</code></pre>
+<p>一般只需要写这样就可以了。</p>
 <p>然后常用的代码块可以是这样：</p>
 <pre><code>while true
-    [clicks] = GetClicks(windowPtr)
-    if clicks == 1
-        执行代码块
-        break; %跳出循环
-    elseif clicks == 2
-        执行另一个代码块
-        break;
-    end
-end
-</code></pre>
+	[clicks] = GetClicks(windowPtr)
+	if clicks == 1
+    	执行代码块
+		break; %跳出循环
+	elseif clicks == 2
+    	执行另一个代码块
+		break;
+	end
+end</code></pre>
+
         </div>
 
         
